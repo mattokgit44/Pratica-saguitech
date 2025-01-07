@@ -24,7 +24,7 @@ function calculateTax(value, percentage) {
 
 document.getElementById('nfseForm').addEventListener('submit', function (e) {
   e.preventDefault();
-
+  // Facilitando o uso dos valores monetários
   const valorVenda = parseFloat(document.getElementById('valorVenda').value);
   const irpf = parseFloat(document.getElementById('irpf').value);
   const pis = parseFloat(document.getElementById('pis').value);
@@ -32,7 +32,7 @@ document.getElementById('nfseForm').addEventListener('submit', function (e) {
   const inss = parseFloat(document.getElementById('inss').value);
   const issqn = parseFloat(document.getElementById('issqn').value);
 
-  // Cálculo dos impostos
+  // Calcula os impostos
   const valorIRPF = calculateTax(valorVenda, irpf);
   const valorPIS = calculateTax(valorVenda, pis);
   const valorCOFINS = calculateTax(valorVenda, cofins);
@@ -41,7 +41,7 @@ document.getElementById('nfseForm').addEventListener('submit', function (e) {
   const totalImpostos = valorIRPF + valorPIS + valorCOFINS + valorINSS + valorISSQN;
   const valorLiquido = valorVenda - totalImpostos;
 
-  // Coleta os itens
+  // Facilitando o uso dos valores dos itens
   const itemRows = document.querySelectorAll('.item-row');
   let itensHTML = '';
   itemRows.forEach((row, index) => {
@@ -53,9 +53,8 @@ document.getElementById('nfseForm').addEventListener('submit', function (e) {
 
     itensHTML += `
         <tr>
-          <td>${index + 1}</td>
-          <td>${descricao}</td>
           <td>${quantidade}</td>
+          <td>${descricao}</td>
           <td>R$ ${valorUnitario}</td>
           <td>R$ ${valorTotal.toFixed(2)}</td>
         </tr>
@@ -66,9 +65,8 @@ document.getElementById('nfseForm').addEventListener('submit', function (e) {
   const notaFiscalHTML = `
         <table>
           <tr>
-            <th>Item</th>
-            <th>Descrição</th>
             <th>Quantidade</th>
+            <th>Descrição</th>
             <th>Valor Unitário</th>
             <th>Valor Total</th>
           </tr>
