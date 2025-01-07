@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de NFS-e - Prática Saguitech</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <h1>Calculadora de NFS-e</h1>
+
+  <form id="nfseForm">
+    <div class="form-group">
+      <label>Valor Total da Venda:</label>
+      <input type="number" id="valorVenda" required step="1" min="0">
+    </div>
+
+    <div class="items-container">
+      <h3>Itens da Venda</h3>
+      <div id="itemsList">
+        <div class="item-row">
+          <input type="text" placeholder="Descrição do item" required>
+          <input type="number" placeholder="Quantidade" required min="1">
+          <input type="number" placeholder="Valor unitário" required step="1" min="0">
+        </div>
+      </div>
+      <button type="button" onclick="addItem()">Adicionar Item</button>
+    </div>
+
+    <h3>Impostos (%)</h3>
+    <div class="form-group">
+      <label>IRPF:</label>
+      <input type="number" id="irpf" required step="1" min="0">
+    </div>
+    <div class="form-group">
+      <label>PIS:</label>
+      <input type="number" id="pis" required step="1" min="0">
+    </div>
+    <div class="form-group">
+      <label>COFINS:</label>
+      <input type="number" id="cofins" required step="1" min="0">
+    </div>
+    <div class="form-group">
+      <label>INSS:</label>
+      <input type="number" id="inss" required step="1" min="0">
+    </div>
+    <div class="form-group">
+      <label>ISSQN:</label>
+      <input type="number" id="issqn" required step="1" min="0">
+    </div>
+
+    <button type="submit">Gerar Nota Fiscal</button>
+  </form>
+
+  <div id="notaFiscal">
+    <h2>Nota Fiscal de Serviço Eletrônica</h2>
+    <div id="notaFiscalContent"></div>
+  </div>
+
+  <script src="assets/js/script.js"></script>
+</body>
+
+</html>
