@@ -24,7 +24,7 @@ function calculateTax(value, percentage) {
 
 document.getElementById('nfseForm').addEventListener('submit', function (e) {
   e.preventDefault();
-  // Facilitando o uso dos valores monetários
+  // Facilitando o uso dos valores gerais
   const valorVenda = parseFloat(document.getElementById('valorVenda').value);
   const irpf = parseFloat(document.getElementById('irpf').value);
   const pis = parseFloat(document.getElementById('pis').value);
