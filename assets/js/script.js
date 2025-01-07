@@ -42,7 +42,8 @@ document.getElementById('nfseForm').addEventListener('submit', function (e) {
   const valorLiquido = valorVenda - totalImpostos;
 
   // Facilitando o uso dos valores dos itens
-  const gera = true;
+  var gera = true;
+  var valorItens = 0;
   const itemRows = document.querySelectorAll('.item-row');
   let itensHTML = '';
   itemRows.forEach((row, index) => {
@@ -51,12 +52,8 @@ document.getElementById('nfseForm').addEventListener('submit', function (e) {
     const quantidade = inputs[1].value;
     const valorUnitario = inputs[2].value;
     const valorTotal = quantidade * valorUnitario;
+    valorItens += valorTotal;
     // Confere se valorTotal é igual a valorVenda
-    if (valorTotal !== valorVenda) {
-      alert('Discrepância nos valores. Verifique os itens da venda.');
-      gera = false;
-      return;
-    }
     itensHTML += `
         <tr>
           <td>${quantidade}</td>
@@ -66,11 +63,13 @@ document.getElementById('nfseForm').addEventListener('submit', function (e) {
         </tr>
         `;
   });
-
-
+  if (valorItens !== valorVenda) {
+    alert('Discrepância nos valores. Verifique os itens da venda.');
+    gera = false;
+    return;
+  }
   // Gera a nota fiscal
-  if (gera) {
-    const notaFiscalHTML = `
+  const notaFiscalHTML = `
         <table>
           <tr>
             <th>Quantidade</th>
@@ -126,7 +125,6 @@ document.getElementById('nfseForm').addEventListener('submit', function (e) {
         </table>
         `;
 
-    document.getElementById('notaFiscalContent').innerHTML = notaFiscalHTML;
-    document.getElementById('notaFiscal').style.display = 'block';
-  }
+  document.getElementById('notaFiscalContent').innerHTML = notaFiscalHTML;
+  document.getElementById('notaFiscal').style.display = 'block';
 });
